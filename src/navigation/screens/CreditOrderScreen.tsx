@@ -12,6 +12,7 @@ import SvgNotification from '../../assets/svgs/Notification';
 import Slider from '@react-native-community/slider';
 import {DefaultTheme, PaperProvider, TextInput} from 'react-native-paper';
 import SvgManat from '../../assets/svgs/Manat';
+import Dropdown from '../../util/dropdown';
 
 const theme = {
   ...DefaultTheme,
@@ -24,6 +25,24 @@ const theme = {
 const CreditOrderScreen = ({navigation}: any) => {
   const [amountValue, setAmountValue] = useState(0);
   const [durationValue, setDurationValue] = useState(0);
+  const [selectedOption1, setSelectedOption1] = useState(
+    'Kredit götürmə məqsədi',
+  );
+  const [selectedOption2, setSelectedOption2] = useState(
+    'Daşınmaz əmlak məlumatınız',
+  );
+  const handleOptionSelect1 = (option: any) => {
+    setSelectedOption1(option);
+    console.log('Selected option 1:', option);
+  };
+
+  const handleOptionSelect2 = (option: any) => {
+    setSelectedOption2(option);
+    console.log('Selected option 2:', option);
+  };
+
+  const dropdownOptions1 = ['Option 1.1', 'Option 1.2', 'Option 1.3'];
+  const dropdownOptions2 = ['Option 2.1', 'Option 2.2', 'Option 2.3'];
 
   const handleAmountValueChange = (newValue: any) => {
     setAmountValue(newValue);
@@ -92,11 +111,11 @@ const CreditOrderScreen = ({navigation}: any) => {
                 <Text>2000</Text>
                 <Text>5000</Text>
               </View>
-              <View style={{marginBottom: 50}}>
+              <View style={{marginBottom: 40}}>
                 <TextInput
                   mode="outlined"
                   selectionColor="#000"
-                  outlineColor="#98A2B3"
+                  outlineColor="#D0D5DD"
                   activeOutlineColor="#155EEF"
                   label="Məbləğ"
                   keyboardType="numeric"
@@ -130,11 +149,11 @@ const CreditOrderScreen = ({navigation}: any) => {
                 <Text style={{color: '#155EEF'}}>30</Text>
                 <Text style={{color: '#155EEF'}}>36</Text>
               </View>
-              <View>
+              <View style={{marginBottom: 8}}>
                 <TextInput
                   mode="outlined"
                   selectionColor="#000"
-                  outlineColor="#98A2B3"
+                  outlineColor="#D0D5DD"
                   activeOutlineColor="#155EEF"
                   label="Müddət"
                   keyboardType="numeric"
@@ -144,6 +163,18 @@ const CreditOrderScreen = ({navigation}: any) => {
                 <View style={{position: 'absolute', right: 20, top: '42%'}}>
                   <Text style={{fontSize: 16, fontWeight: '500'}}>AY</Text>
                 </View>
+              </View>
+              <View style={styles.container}>
+                <Dropdown
+                  options={dropdownOptions1}
+                  defaultOption={selectedOption1}
+                  onSelect={handleOptionSelect1}
+                />
+                <Dropdown
+                  options={dropdownOptions2}
+                  defaultOption={selectedOption2}
+                  onSelect={handleOptionSelect2}
+                />
               </View>
             </View>
             <TouchableOpacity
@@ -173,5 +204,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginTop: 20,
     marginBottom: 30,
+  },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 10,
   },
 });
