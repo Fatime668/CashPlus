@@ -110,7 +110,7 @@ const ConfirmCodeScreen = ({navigation}: any) => {
         </View>
         <TouchableOpacity
           style={styles.davamBtn}
-          onPress={() => navigation.navigate('Confirm')}>
+          onPress={() => navigation.navigate('CreditOrder')}>
           <Text style={{color: '#fff', fontSize: 16, fontWeight: '600'}}>
             Davam et
           </Text>

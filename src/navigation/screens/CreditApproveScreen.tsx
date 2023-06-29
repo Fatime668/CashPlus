@@ -1,14 +1,14 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const Dashboard = () => {
+const CreditApproveScreen = () => {
   return (
     <View>
-      <Text>Dashboard</Text>
+      <Text>CreditApproveScreen</Text>
     </View>
   );
 };
 
-export default Dashboard;
+export default CreditApproveScreen;
 
 const styles = StyleSheet.create({});
