@@ -10,14 +10,14 @@ import React, {useRef, useState} from 'react';
 import SvgBack from '../../assets/svgs/BackIcon';
 
 const ConfirmCodeScreen = ({navigation}: any) => {
-  const [otp, setOtp] = useState('');
+  const [otp, setOtp] = useState(['', '', '', '']);
   const inputRefs = useRef<Array<TextInput | null>>([]);
 
   const handleOtpChange = (index: number, value: string) => {
     setOtp(prevOtp => {
-      const otpArray = prevOtp.split('');
+      const otpArray = [...prevOtp];
       otpArray[index] = value;
-      return otpArray.join('');
+      return otpArray;
     });
 
     if (index < 3 && value !== '') {
@@ -55,6 +55,7 @@ const ConfirmCodeScreen = ({navigation}: any) => {
 
           <View style={styles.container}>
             <TextInput
+              ref={ref => (inputRefs.current[0] = ref)}
               style={styles.input}
               maxLength={1}
               value={otp[0]}
@@ -62,6 +63,7 @@ const ConfirmCodeScreen = ({navigation}: any) => {
               keyboardType="numeric"
             />
             <TextInput
+              ref={ref => (inputRefs.current[1] = ref)}
               style={styles.input}
               maxLength={1}
               value={otp[1]}
@@ -69,6 +71,7 @@ const ConfirmCodeScreen = ({navigation}: any) => {
               keyboardType="numeric"
             />
             <TextInput
+              ref={ref => (inputRefs.current[2] = ref)}
               style={styles.input}
               maxLength={1}
               value={otp[2]}
@@ -76,6 +79,7 @@ const ConfirmCodeScreen = ({navigation}: any) => {
               keyboardType="numeric"
             />
             <TextInput
+              ref={ref => (inputRefs.current[3] = ref)}
               style={styles.input}
               maxLength={1}
               value={otp[3]}
