@@ -1,5 +1,6 @@
 import {
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -21,81 +22,139 @@ const theme = {
 };
 
 const CreditOrderScreen = ({navigation}: any) => {
-  const [value, setValue] = useState(0);
+  const [amountValue, setAmountValue] = useState(0);
+  const [durationValue, setDurationValue] = useState(0);
 
-  const handleValueChange = (newValue: any) => {
-    setValue(newValue);
+  const handleAmountValueChange = (newValue: any) => {
+    setAmountValue(newValue);
   };
 
-  const handleTextInputChange = (text: any) => {
-    setValue(parseInt(text) || 0);
+  const handleDurationValueChange = (newValue: any) => {
+    setDurationValue(newValue);
   };
-  const data = value.toFixed().toString();
+
+  const handleAmountTextInputChange = (text: any) => {
+    setAmountValue(parseInt(text) || 0);
+  };
+
+  const handleDurationTextInputChange = (text: any) => {
+    setDurationValue(parseInt(text) || 0);
+  };
+  const amountData = amountValue.toFixed().toString();
+  const durationData = durationValue.toFixed().toString();
 
   return (
     <PaperProvider theme={theme}>
       <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginHorizontal: 20,
-          }}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <SvgBack />
-          </TouchableOpacity>
-          <Text
+        <ScrollView>
+          <View
             style={{
-              fontSize: 16,
-              fontWeight: '500',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginHorizontal: 20,
             }}>
-            İpteka krediti
-          </Text>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <SvgNotification />
-          </TouchableOpacity>
-        </View>
-        <View style={{marginHorizontal: 20, marginTop: 40, marginBottom: 20}}>
-          <Text style={{fontSize: 24, fontWeight: '500'}}>Müraciət</Text>
-          <View style={{marginTop: 25}}>
-            {/* <Text>Məbləğ: {value.toFixed()}</Text> */}
-            <Text style={{fontSize: 16, fontWeight: '500', marginBottom: 8}}>
-              Məbləğ
-            </Text>
-            <Slider
-              value={value}
-              minimumValue={500}
-              maximumValue={5000}
-              onValueChange={handleValueChange}
-            />
-            <View
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <SvgBack />
+            </TouchableOpacity>
+            <Text
               style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                marginBottom: 20,
+                fontSize: 16,
+                fontWeight: '500',
               }}>
-              <Text>500</Text>
-              <Text>2000</Text>
-              <Text>5000</Text>
-            </View>
-            <View>
-              <TextInput
-                mode="outlined"
-                selectionColor="#000"
-                outlineColor="#98A2B3"
-                activeOutlineColor="#155EEF"
-                label="Məbləğ"
-                keyboardType="numeric"
-                value={data}
-                onChangeText={handleTextInputChange}
+              İpteka krediti
+            </Text>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <SvgNotification />
+            </TouchableOpacity>
+          </View>
+          <View style={{marginHorizontal: 20, marginTop: 40, marginBottom: 20}}>
+            <Text style={{fontSize: 24, fontWeight: '500'}}>Müraciət</Text>
+            <View style={{marginTop: 25}}>
+              {/* <Text>Məbləğ: {value.toFixed()}</Text> */}
+              <Text style={{fontSize: 16, fontWeight: '500', marginBottom: 8}}>
+                Məbləğ
+              </Text>
+              <Slider
+                value={amountValue}
+                minimumValue={500}
+                maximumValue={5000}
+                onValueChange={handleAmountValueChange}
+                thumbTintColor="#155EEF"
               />
-              <View style={{position: 'absolute', right: 20, top: '45%'}}>
-                <SvgManat />
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  marginBottom: 20,
+                }}>
+                <Text>500</Text>
+                <Text>2000</Text>
+                <Text>5000</Text>
+              </View>
+              <View style={{marginBottom: 50}}>
+                <TextInput
+                  mode="outlined"
+                  selectionColor="#000"
+                  outlineColor="#98A2B3"
+                  activeOutlineColor="#155EEF"
+                  label="Məbləğ"
+                  keyboardType="numeric"
+                  value={amountData}
+                  onChangeText={handleAmountTextInputChange}
+                />
+                <View style={{position: 'absolute', right: 20, top: '45%'}}>
+                  <SvgManat />
+                </View>
+              </View>
+              <Text style={{fontSize: 16, fontWeight: '500', marginBottom: 8}}>
+                Müddət
+              </Text>
+              <Slider
+                value={durationValue}
+                minimumValue={6}
+                maximumValue={36}
+                onValueChange={handleDurationValueChange}
+                thumbTintColor="#155EEF"
+              />
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  marginBottom: 20,
+                }}>
+                <Text style={{color: '#155EEF'}}>6</Text>
+                <Text style={{color: '#155EEF'}}>12</Text>
+                <Text style={{color: '#155EEF'}}>18</Text>
+                <Text style={{color: '#155EEF'}}>24</Text>
+                <Text style={{color: '#155EEF'}}>30</Text>
+                <Text style={{color: '#155EEF'}}>36</Text>
+              </View>
+              <View>
+                <TextInput
+                  mode="outlined"
+                  selectionColor="#000"
+                  outlineColor="#98A2B3"
+                  activeOutlineColor="#155EEF"
+                  label="Müddət"
+                  keyboardType="numeric"
+                  value={durationData}
+                  onChangeText={handleDurationTextInputChange}
+                />
+                <View style={{position: 'absolute', right: 20, top: '42%'}}>
+                  <Text style={{fontSize: 16, fontWeight: '500'}}>AY</Text>
+                </View>
               </View>
             </View>
+            <TouchableOpacity
+              style={styles.davamBtn}
+              onPress={() => navigation.navigate('CreditApprove')}>
+              <Text style={{color: '#fff', fontSize: 16, fontWeight: '600'}}>
+                Davam et
+              </Text>
+            </TouchableOpacity>
           </View>
-        </View>
+        </ScrollView>
       </SafeAreaView>
     </PaperProvider>
   );
@@ -103,4 +162,16 @@ const CreditOrderScreen = ({navigation}: any) => {
 
 export default CreditOrderScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  davamBtn: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#155EEF',
+    paddingVertical: 16,
+    borderWidth: 1,
+    borderColor: '#155EEF',
+    borderRadius: 8,
+    marginTop: 20,
+    marginBottom: 30,
+  },
+});
