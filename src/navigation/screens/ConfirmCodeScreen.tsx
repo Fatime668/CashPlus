@@ -27,17 +27,32 @@ const ConfirmCodeScreen = ({navigation}: any) => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1, marginHorizontal: 20}}>
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginHorizontal: 20,
+        }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <SvgBack />
         </TouchableOpacity>
-        <Text style={{marginLeft: '30%', fontSize: 16, fontWeight: '500'}}>
+        <Text
+          style={{
+            marginLeft: '30%',
+            fontSize: 16,
+            fontWeight: '500',
+          }}>
           Verification
         </Text>
       </View>
 
-      <View style={{flex: 1, justifyContent: 'space-between'}}>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'space-between',
+          marginHorizontal: 20,
+        }}>
         <View>
           <Text style={{fontSize: 24, fontWeight: '500', marginTop: 35}}>
             OTP

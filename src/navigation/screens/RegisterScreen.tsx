@@ -25,8 +25,14 @@ const RegisterScreen = ({navigation}: any) => {
   };
   return (
     <PaperProvider theme={theme}>
-      <SafeAreaView style={{flex: 1, marginHorizontal: 20}}>
-        <View style={{flex: 1, marginTop: 50, justifyContent: 'space-between'}}>
+      <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
+        <View
+          style={{
+            flex: 1,
+            marginTop: 50,
+            marginHorizontal: 20,
+            justifyContent: 'space-between',
+          }}>
           <View>
             <Text style={{fontSize: 30, fontWeight: '600', marginBottom: 25}}>
               Qeydiyyat
