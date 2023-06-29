@@ -1,12 +1,14 @@
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {TextInput} from 'react-native-paper';
 import Root from './Root';
+import {Provider} from 'react-redux';
+import {store} from './src/redux/store';
 
 const App = () => {
-  return <Root />;
+  return (
+    <Provider store={store}>
+      <Root />
+    </Provider>
+  );
 };
 
 export default App;
-
-const styles = StyleSheet.create({});

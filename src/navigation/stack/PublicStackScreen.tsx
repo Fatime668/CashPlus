@@ -4,7 +4,6 @@ import RegisterScreen from '../screens/RegisterScreen';
 import ConfirmCodeScreen from '../screens/ConfirmCodeScreen';
 
 type AuthenticationStackParamList = {
-  //   Login: undefined;
   Register: undefined;
   Confirm: undefined;
 };
