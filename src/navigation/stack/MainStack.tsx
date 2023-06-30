@@ -5,6 +5,7 @@ import ConfirmCodeScreen from '../screens/ConfirmCodeScreen';
 import CreditOrderScreen from '../screens/CreditOrderScreen';
 import CreditApproveScreen from '../screens/CreditApproveScreen';
 import OrderNumberScreen from '../screens/OrderNumberScreen';
+import OrderCompleteScreen from '../screens/OrderCompleteScreen';
 
 type AuthenticationStackParamList = {
   Register: undefined;
@@ -12,6 +13,7 @@ type AuthenticationStackParamList = {
   CreditOrder: undefined;
   CreditApprove: undefined;
   OrderNumber: undefined;
+  OrderComplete: undefined;
 };
 
 const Stack = createNativeStackNavigator<AuthenticationStackParamList>();
@@ -24,6 +26,7 @@ const MainStack = () => {
       <Stack.Screen name="CreditOrder" component={CreditOrderScreen} />
       <Stack.Screen name="CreditApprove" component={CreditApproveScreen} />
       <Stack.Screen name="OrderNumber" component={OrderNumberScreen} />
+      <Stack.Screen name="OrderComplete" component={OrderCompleteScreen} />
     </Stack.Navigator>
   );
 };

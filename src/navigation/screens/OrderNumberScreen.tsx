@@ -97,7 +97,7 @@ const OrderNumberScreen = ({navigation}: any) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.davamBtn, {backgroundColor: '#155EEF'}]}
-            onPress={() => navigation.navigate('OrderNumber')}>
+            onPress={() => navigation.navigate('OrderComplete')}>
             <Text style={{color: '#fff', fontSize: 16, fontWeight: '600'}}>
               Təsdiq
             </Text>
