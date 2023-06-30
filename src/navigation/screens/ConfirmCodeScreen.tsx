@@ -6,12 +6,14 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import SvgBack from '../../assets/svgs/BackIcon';
 
 const ConfirmCodeScreen = ({navigation}: any) => {
   const [otp, setOtp] = useState(['', '', '', '']);
   const inputRefs = useRef<Array<TextInput | null>>([]);
+  // for timer
+  const [counter, setCounter] = useState(120);
 
   const handleOtpChange = (index: number, value: string) => {
     setOtp(prevOtp => {
@@ -24,6 +26,25 @@ const ConfirmCodeScreen = ({navigation}: any) => {
       const nextIndex = index + 1;
       inputRefs.current[nextIndex]?.focus();
     }
+  };
+
+  useEffect(() => {
+    const timerInterval = setInterval(() => {
+      setCounter(prevCounter => {
+        if (prevCounter === 1) {
+          clearInterval(timerInterval);
+        }
+        return prevCounter - 1;
+      });
+    }, 1000);
+
+    return () => {
+      clearInterval(timerInterval);
+    };
+  }, []);
+
+  const handleResendOTP = () => {
+    setCounter(120);
   };
 
   return (
@@ -104,8 +125,20 @@ const ConfirmCodeScreen = ({navigation}: any) => {
           </View>
 
           <View style={{alignItems: 'center', rowGap: 5}}>
-            <Text>Don't receive the OTP? Resend OTP</Text>
-            <Text style={{fontWeight: '600'}}>01 : 20</Text>
+            {/* disabled={counter > 1} */}
+            <View style={{flexDirection: 'row'}}>
+              <Text>Don't receive the OTP? </Text>
+              <TouchableOpacity onPress={handleResendOTP}>
+                <Text style={{color: counter > 1 ? '#888' : '#000'}}>
+                  Resend OTP
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <Text style={{fontWeight: '600'}}>{`${Math.floor(counter / 60)
+              .toString()
+              .padStart(2, '0')} : ${Math.floor(counter % 60)
+              .toString()
+              .padStart(2, '0')}`}</Text>
           </View>
         </View>
         <TouchableOpacity
