@@ -41,16 +41,12 @@ const CreditApproveScreen = ({navigation}: any) => {
             <View
               style={{
                 flexDirection: 'row',
+                alignItems: 'flex-start',
                 columnGap: 10,
                 marginBottom: 20,
               }}>
               <SvgTick />
-              <Text
-                style={{
-                  fontSize: 16,
-                  fontWeight: '400',
-                  lineHeight: 24,
-                }}>
+              <Text style={styles.testiqShertler}>
                 İş yeri haqqında məlumatları ASAN Finance xidmətindən alınması
                 üçün razılıq verirəm.
               </Text>
@@ -60,14 +56,10 @@ const CreditApproveScreen = ({navigation}: any) => {
                 flexDirection: 'row',
                 columnGap: 10,
                 marginBottom: 20,
+                alignItems: 'flex-start',
               }}>
               <SvgTick />
-              <Text
-                style={{
-                  fontSize: 16,
-                  fontWeight: '400',
-                  lineHeight: 24,
-                }}>
+              <Text style={styles.testiqShertler}>
                 Akb-dən kredit tarixçəsinin əldə olunmasına razılıq verirəm.
               </Text>
             </View>
@@ -76,21 +68,17 @@ const CreditApproveScreen = ({navigation}: any) => {
                 flexDirection: 'row',
                 columnGap: 10,
                 marginBottom: 20,
+                alignItems: 'flex-start',
               }}>
               <SvgTick />
-              <Text
-                style={{
-                  fontSize: 16,
-                  fontWeight: '400',
-                  lineHeight: 24,
-                }}>
+              <Text style={styles.testiqShertler}>
                 Akb-dən kredit skor məlumatları əldə olunmasına razılıq verirəm.
               </Text>
             </View>
           </View>
           <TouchableOpacity
             style={styles.davamBtn}
-            onPress={() => navigation.navigate('CreditApprove')}>
+            onPress={() => navigation.navigate('OrderNumber')}>
             <Text style={{color: '#fff', fontSize: 16, fontWeight: '600'}}>
               Təsdiq et
             </Text>
@@ -114,5 +102,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginTop: 20,
     marginBottom: '30%',
+  },
+  testiqShertler: {
+    fontSize: 16,
+    fontWeight: '400',
+    lineHeight: 24,
+    top: -2,
   },
 });
